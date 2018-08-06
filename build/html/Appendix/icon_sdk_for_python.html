@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python SDK &mdash; ICON Documentation 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="색인"
+              href="../genindex.html"/>
+        <link rel="search" title="검색" href="../search.html"/>
+    <link rel="top" title="ICON Documentation 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Appendix" href="index.html"/>
+        <link rel="next" title="JSON RPC API v2" href="icx_JSON_2_RPC.html"/>
+        <link rel="prev" title="Appendix" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ICON Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ICONnode/index.html">ICON node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HowtouseICONnetwork/index.html">How to use ICON network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AccountManagement/index.html">Account Mangement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TheICONnetwork/index.html">The ICON network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ContractandTransactions/index.html">Contract and Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ/index.html">FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendix</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python SDK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisite">Prerequisite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#version">Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#glossary">Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-information">Technical information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modules">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-started">Getting started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#functions-of-wallet">Functions of wallet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-keystore-file-of-wallet-keystore-file-path-password"><code class="docutils literal notranslate"><span class="pre">create_keystore_file_of_wallet(keystore_file_path,</span> <span class="pre">password)</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-wallet-by-private-key-password-hex-private-key"><code class="docutils literal notranslate"><span class="pre">create_wallet_by_private_key(password,</span> <span class="pre">hex_private_key)</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#open-keystore-file-of-wallet-keystore-file-path-password"><code class="docutils literal notranslate"><span class="pre">open_keystore_file_of_wallet(keystore_file_path,</span> <span class="pre">password)</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transfer-value-password-to-address-value-fee-10000000000000000-uri-hex-private-key-none-kwargs"><code class="docutils literal notranslate"><span class="pre">transfer_value(password,</span> <span class="pre">to_address,</span> <span class="pre">value,</span> <span class="pre">fee=10000000000000000,</span> <span class="pre">uri,</span> <span class="pre">hex_private_key=None,</span> <span class="pre">**kwargs)</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-wallet-info-uri"><code class="docutils literal notranslate"><span class="pre">get_wallet_info(uri)</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-balance-uri"><code class="docutils literal notranslate"><span class="pre">get_balance(uri)</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-address"><code class="docutils literal notranslate"><span class="pre">get_address()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="icx_JSON_2_RPC.html">JSON RPC API v2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ICON Documentation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Appendix</a> &raquo;</li>
+        
+      <li>Python SDK</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Appendix/icon_sdk_for_python.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-sdk">
+<span id="python-sdk"></span><h1>Python SDK<a class="headerlink" href="#python-sdk" title="제목 주소">¶</a></h1>
+<p>ICON supports SDK for 3rd party or user services development. You can
+integrate ICON SDK for your project and utilize ICON's functionality.</p>
+<div class="section" id="prerequisite">
+<span id="prerequisite"></span><h2>Prerequisite<a class="headerlink" href="#prerequisite" title="제목 주소">¶</a></h2>
+<ul class="simple">
+<li>Python 3.6.x</li>
+</ul>
+</div>
+<div class="section" id="version">
+<span id="version"></span><h2>Version<a class="headerlink" href="#version" title="제목 주소">¶</a></h2>
+<ul class="simple">
+<li>0.0.5 beta</li>
+</ul>
+</div>
+<div class="section" id="glossary">
+<span id="glossary"></span><h2>Glossary<a class="headerlink" href="#glossary" title="제목 주소">¶</a></h2>
+<ul class="simple">
+<li>Address of wallet : Unique string to identify the address to
+transfer value. It begins with hx.</li>
+<li>Private key: A tiny bit of code that is paired with a public key to
+set off algorithms to encrypt and decrypt a text for the specific
+address.</li>
+<li>Public key: Long alphanumeric characters that is used to encrypt
+data (message).</li>
+</ul>
+</div>
+<div class="section" id="technical-information">
+<span id="technical-information"></span><h2>Technical information<a class="headerlink" href="#technical-information" title="제목 주소">¶</a></h2>
+<p>There are five steps to get from private-&gt;public -&gt; address:</p>
+<ol class="simple">
+<li>Generate a private key.</li>
+<li>Derive a public key from the private key.</li>
+<li>H1 = sha3_256( Public key) =&gt; 32 byte</li>
+<li>BitAddress = last 20 bytes of H1</li>
+<li>Address = hx || HexString(BitAddress)
+ex) hxaa688d74eb5f98b577883ca203535d2aa4f0838c</li>
+</ol>
+</div>
+<div class="section" id="modules">
+<span id="modules"></span><h2>Modules<a class="headerlink" href="#modules" title="제목 주소">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">wallet</span></code> : Package name of ICX wallet functions.</li>
+</ul>
+</div>
+<div class="section" id="getting-started">
+<span id="getting-started"></span><h2>Getting started<a class="headerlink" href="#getting-started" title="제목 주소">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install iconsdk
+</pre></div>
+</div>
+<div class="section" id="example">
+<span id="example"></span><h3>Example<a class="headerlink" href="#example" title="제목 주소">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">icx.wallet</span> <span class="k">import</span> <span class="n">Wallet</span>
+
+<span class="c1"># Create a keystore file of a wallet.</span>
+<span class="n">my_wallet_1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">create_keystore_file_of_wallet</span><span class="p">(</span><span class="n">keystore_file_path</span><span class="o">=</span><span class="s2">&quot;./keystore.txt&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;test1234*&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a wallet by the private key.</span>
+<span class="n">my_wallet_2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">create_wallet_by_private_key</span><span class="p">(</span><span class="n">password</span><span class="o">=</span><span class="s2">&quot;test1234*&quot;</span><span class="p">,</span> <span class="n">hex_private_key</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Open the keystore file of the wallet.</span>
+<span class="n">my_wallet_3</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">open_keystore_file_of_wallet</span><span class="p">(</span><span class="n">keystore_file_path</span><span class="o">=</span><span class="s2">&quot;./test_keystore_for_transfer.txt&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;ejfnvm1234*&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get balance.</span>
+<span class="n">balance</span> <span class="o">=</span> <span class="n">my_wallet_1</span><span class="o">.</span><span class="n">get_balance</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://testwallet.icon.foundation/api/&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get information of the wallet.</span>
+<span class="n">wallet_info</span> <span class="o">=</span> <span class="n">my_wallet_1</span><span class="o">.</span><span class="n">get_wallet_info</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://testwallet.icon.foundation/api/&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get an address.</span>
+<span class="n">wallet_address</span> <span class="o">=</span> <span class="n">my_wallet_1</span><span class="o">.</span><span class="n">get_address</span><span class="p">()</span>
+
+<span class="c1"># Transfer value 1,010,000,000,000,000,000 loop (1.01 icx) with 10,000,000,000,000,000 loop (0.01 icx) fee.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">my_wallet_3</span><span class="o">.</span><span class="n">transfer_value</span><span class="p">(</span><span class="n">password</span><span class="o">=</span><span class="s2">&quot;ejfnvm1234*&quot;</span><span class="p">,</span> <span class="n">to_address</span><span class="o">=</span><span class="s2">&quot;hx68bc6f60ea01bc033504a217631c601386be26b7&quot;</span><span class="p">,</span> \
+                <span class="n">value</span><span class="o">=</span><span class="s2">&quot;1010000000000000000&quot;</span><span class="p">,</span> <span class="n">fee</span><span class="o">=</span><span class="mi">10000000000000000</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">PasswordIsNotAcceptable</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Password is not acceptable.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">PasswordIsWrong</span><span class="p">:</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Password is wrong.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">AddressIsWrong</span><span class="p">:</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Wallet address is wrong.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">NotEnoughBalanceInWallet</span><span class="p">:</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Balance is not enough.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">TransferFeeIsInvalid</span><span class="p">:</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Transaction Fee is invalid. The fee should be 10000000000000000.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">FeeIsBiggerThanAmount</span><span class="p">:</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Fee is bigger than transaction amount.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">AmountIsInvalid</span><span class="p">:</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;The amount you want to transfer is not valid.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">AddressIsSame</span><span class="p">:</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Wallet address to transfer must be different from Wallet address to deposit.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="functions-of-wallet">
+<span id="functions-of-wallet"></span><h2>Functions of wallet<a class="headerlink" href="#functions-of-wallet" title="제목 주소">¶</a></h2>
+<hr class="docutils" />
+<div class="section" id="create-keystore-file-of-wallet-keystore-file-path-password">
+<span id="create-keystore-file-of-wallet-keystore-file-path-password"></span><h3><code class="docutils literal notranslate"><span class="pre">create_keystore_file_of_wallet(keystore_file_path,</span> <span class="pre">password)</span></code><a class="headerlink" href="#create-keystore-file-of-wallet-keystore-file-path-password" title="제목 주소">¶</a></h3>
+<p>create both a wallet and a keystore file with file path and given
+password.</p>
+<div class="section" id="arguments">
+<span id="arguments"></span><h4>Arguments<a class="headerlink" href="#arguments" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">keystore_file_path</span></code> : File path for the keystore file of the
+wallet.</li>
+<li><code class="docutils literal notranslate"><span class="pre">password</span></code>: Password for the wallet. Password must include alphabet
+character, number, and special character.</li>
+</ul>
+</div>
+<div class="section" id="successful-case">
+<span id="successful-case"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>Return : Instance of Wallet, private key</li>
+</ul>
+</div>
+<div class="section" id="error-cases">
+<span id="error-cases"></span><h4>Error cases<a class="headerlink" href="#error-cases" title="제목 주소">¶</a></h4>
+<p>It will raise following exception.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">PasswordIsNotAcceptable</span></code>: Password is not acceptable. It must be
+more than eight characters long, contain any letters from <strong>a</strong> to
+<strong>z</strong>, any numbers from <strong>0</strong> to <strong>9</strong> and some special characters,
+including &#64; (at sign), .(period), -(hyphen or dash), and(or) _
+(underscore).</li>
+<li><code class="docutils literal notranslate"><span class="pre">FilePathIsWrong</span></code>: File path is wrong.</li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="create-wallet-by-private-key-password-hex-private-key">
+<span id="create-wallet-by-private-key-password-hex-private-key"></span><h3><code class="docutils literal notranslate"><span class="pre">create_wallet_by_private_key(password,</span> <span class="pre">hex_private_key)</span></code><a class="headerlink" href="#create-wallet-by-private-key-password-hex-private-key" title="제목 주소">¶</a></h3>
+<p>create wallet without keystore file.</p>
+<div class="section" id="arguments">
+<span id="id1"></span><h4>Arguments<a class="headerlink" href="#arguments" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">hex_private_key</span></code> : A private key in hexadecimal - 256 bits in
+hexadecimal is 32 bytes, or 64 characters in the range 0-9 or A-F. A
+tiny bit of code that is paired with a public key to set off
+algorithms to encrypt and decrypt a text for the specific address.</li>
+<li><code class="docutils literal notranslate"><span class="pre">password</span></code>: Password for the wallet. Password must include alphabet
+character, number, and special character.</li>
+</ul>
+</div>
+<div class="section" id="successful-case">
+<span id="id2"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>Return : Instance of Wallet, private key</li>
+</ul>
+</div>
+<div class="section" id="error-cases">
+<span id="id3"></span><h4>Error cases<a class="headerlink" href="#error-cases" title="제목 주소">¶</a></h4>
+<p>It will raise following exception.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">TypeError</span></code></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="open-keystore-file-of-wallet-keystore-file-path-password">
+<span id="open-keystore-file-of-wallet-keystore-file-path-password"></span><h3><code class="docutils literal notranslate"><span class="pre">open_keystore_file_of_wallet(keystore_file_path,</span> <span class="pre">password)</span></code><a class="headerlink" href="#open-keystore-file-of-wallet-keystore-file-path-password" title="제목 주소">¶</a></h3>
+<p>Open the created keystore file and read the information of the file.</p>
+<div class="section" id="arguments">
+<span id="id4"></span><h4>Arguments<a class="headerlink" href="#arguments" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">keystore_file_path</span></code> : File path for the keystore file of the
+wallet.</li>
+<li><code class="docutils literal notranslate"><span class="pre">password</span></code>: Password for the wallet. Password must include alphabet
+character, number, and special character.</li>
+</ul>
+</div>
+<div class="section" id="successful-case">
+<span id="id5"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>Return : Instance of Wallet.</li>
+</ul>
+</div>
+<div class="section" id="error-cases">
+<span id="id6"></span><h4>Error cases<a class="headerlink" href="#error-cases" title="제목 주소">¶</a></h4>
+<p>It will raise following exception.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">PasswordIsWrong</span></code>: Password is wrong.</li>
+<li><code class="docutils literal notranslate"><span class="pre">FilePathIsWrong</span></code>: File path is wrong.</li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="transfer-value-password-to-address-value-fee-10000000000000000-uri-hex-private-key-none-kwargs">
+<span id="transfer-value-password-to-address-value-fee-10000000000000000-uri-hex-private-key-none-kwargs"></span><h3><code class="docutils literal notranslate"><span class="pre">transfer_value(password,</span> <span class="pre">to_address,</span> <span class="pre">value,</span> <span class="pre">fee=10000000000000000,</span> <span class="pre">uri,</span> <span class="pre">hex_private_key=None,</span> <span class="pre">**kwargs)</span></code><a class="headerlink" href="#transfer-value-password-to-address-value-fee-10000000000000000-uri-hex-private-key-none-kwargs" title="제목 주소">¶</a></h3>
+<p>Transfer the value from the given wallet to the specific address with
+the fee.</p>
+<div class="section" id="arguments">
+<span id="id7"></span><h4>Arguments<a class="headerlink" href="#arguments" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">password</span></code> : Password for the wallet in keystore file used in
+open_wallet_from_file()</li>
+<li><code class="docutils literal notranslate"><span class="pre">to_address</span></code>: Address of the wallet</li>
+<li><code class="docutils literal notranslate"><span class="pre">value</span></code> : Amount of money</li>
+<li><code class="docutils literal notranslate"><span class="pre">fee</span></code> : Transfer fee (10000000000000000 loop)</li>
+<li><code class="docutils literal notranslate"><span class="pre">uri</span></code> : URI of ICON API. The default value is
+'<a class="reference external" href="https://testwallet.icon.foundation/api/">https://testwallet.icon.foundation/api/</a>', test net. You can use
+another URI of ICON API for various test net like Ethereum.</li>
+<li><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> : (Optional) Reserved for the next version</li>
+</ul>
+</div>
+<div class="section" id="tip">
+<span id="tip"></span><h4>TIP<a class="headerlink" href="#tip" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">value</span></code> and <code class="docutils literal notranslate"><span class="pre">fee</span></code> are integer with decimal point 10^18.
+Ex) 1.10 icx =&gt; 1.10 X 1,000,000,000,000,000,000 = 1,100,000,000,000,000,000
+loop.</li>
+<li>Need to wait for a while after transfer value. Because it takes time
+to make consensus among nodes. We recommend 0.3 sec at least.</li>
+</ul>
+</div>
+<div class="section" id="successful-case">
+<span id="id8"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>Return : Response</li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;tx_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;4bf74e6aeeb43bde5dc8d5b62537a33ac8eb7605ebbdb51b015c1881b45b3aed&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">response_code</span></code>: JSON RPC error code.</li>
+<li><code class="docutils literal notranslate"><span class="pre">tx_hash</span></code>: Hash data of the result. Use <code class="docutils literal notranslate"><span class="pre">icx_getTransactionResult</span></code> to
+get the result.</li>
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: It MUST be the same as the value of the id member in the
+Request Object.<ul>
+<li>If there was an error in detecting the id in the Request object
+(e.g. Parse error/Invalid Request), it MUST be Null.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="unsuccessful-case">
+<span id="unsuccessful-case"></span><h4>Unsuccessful case<a class="headerlink" href="#unsuccessful-case" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>Return : Response</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;create tx message&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;response_code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">11</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="error-cases">
+<span id="id9"></span><h4>Error cases<a class="headerlink" href="#error-cases" title="제목 주소">¶</a></h4>
+<p>It will raise following exception.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">AddressIsWrong</span></code> : Wallet address is wrong.</li>
+<li><code class="docutils literal notranslate"><span class="pre">PasswordIsWrong</span></code>: Password is wrong.</li>
+<li><code class="docutils literal notranslate"><span class="pre">NoEnoughBalanceInWallet</span></code> : Sender's wallet does not have enough
+balance.</li>
+<li><code class="docutils literal notranslate"><span class="pre">TransferFeeIsInvalid</span></code> : Transfer fee is invalid.</li>
+<li><code class="docutils literal notranslate"><span class="pre">TimestampIsNotCorrect</span></code> : Timestamp is not correct. (Adjust your
+computer's time and date.)</li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-wallet-info-uri">
+<span id="get-wallet-info-uri"></span><h3><code class="docutils literal notranslate"><span class="pre">get_wallet_info(uri)</span></code><a class="headerlink" href="#get-wallet-info-uri" title="제목 주소">¶</a></h3>
+<p>Get the keystore file information and the balance.</p>
+<div class="section" id="arguments">
+<span id="id10"></span><h4>Arguments<a class="headerlink" href="#arguments" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">uri</span></code> : URI of ICON API. The default value is
+'<a class="reference external" href="https://testwallet.icon.foundation/api/">https://testwallet.icon.foundation/api/</a>', test net. You can use
+another URI of ICON API for various test net like Ethereum.</li>
+</ul>
+</div>
+<div class="section" id="successful-case">
+<span id="id11"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<p>Return dictionary with sub items like below.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">balance</span></code> : the balance of this wallet</li>
+<li><code class="docutils literal notranslate"><span class="pre">depositAddress</span></code>: the address of this wallet</li>
+<li><code class="docutils literal notranslate"><span class="pre">completedTransactions</span></code> : list of dictionary to store completed
+transactions<ul>
+<li><code class="docutils literal notranslate"><span class="pre">requestedTime</span></code> : The time when the transaction was requested</li>
+<li><code class="docutils literal notranslate"><span class="pre">transactionType</span></code> : deposit or withdraw</li>
+<li><code class="docutils literal notranslate"><span class="pre">transactionID</span></code> : ID of transaction to track</li>
+<li><code class="docutils literal notranslate"><span class="pre">amount</span></code> : The amount of money</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">pendingTransactions</span></code> : list of dictionary to store pending
+transactions<ul>
+<li><code class="docutils literal notranslate"><span class="pre">requestedTime</span></code> : The time when the transaction was requested</li>
+<li><code class="docutils literal notranslate"><span class="pre">transactionType</span></code> : deposit or withdraw</li>
+<li><code class="docutils literal notranslate"><span class="pre">transactionID</span></code> : ID of transaction to track</li>
+<li><code class="docutils literal notranslate"><span class="pre">amount</span></code> : The amount of money</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="error-cases">
+<span id="id12"></span><h4>Error cases<a class="headerlink" href="#error-cases" title="제목 주소">¶</a></h4>
+<p>It will raise following exception.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">AddressIsWrong</span></code> : Address is wrong.</li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-balance-uri">
+<span id="get-balance-uri"></span><h3><code class="docutils literal notranslate"><span class="pre">get_balance(uri)</span></code><a class="headerlink" href="#get-balance-uri" title="제목 주소">¶</a></h3>
+<p>Get the balance of all addresses in the current wallet.</p>
+<div class="section" id="arguments">
+<span id="id13"></span><h4>Arguments<a class="headerlink" href="#arguments" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">uri</span></code> : URI of ICON API. The default value is
+'<a class="reference external" href="https://testwallet.icon.foundation/api/">https://testwallet.icon.foundation/api/</a>', test net. You can use
+another URI of ICON API for various test net like Ethereum.</li>
+</ul>
+</div>
+<div class="section" id="successful-case">
+<span id="id14"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>Return integer with decimal point 10^18.
+Ex) 1.10 icx =&gt; It will return 1,100,000,000,000,000,000.</li>
+</ul>
+</div>
+<div class="section" id="error-cases">
+<span id="id15"></span><h4>Error cases<a class="headerlink" href="#error-cases" title="제목 주소">¶</a></h4>
+<p>It will raise following exception.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">AddressIsWrong</span></code> : Address is wrong.</li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-address">
+<span id="get-address"></span><h3><code class="docutils literal notranslate"><span class="pre">get_address()</span></code><a class="headerlink" href="#get-address" title="제목 주소">¶</a></h3>
+<p>Get the address of wallet.</p>
+<div class="section" id="arguments">
+<span id="id16"></span><h4>Arguments<a class="headerlink" href="#arguments" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>N/A</li>
+</ul>
+</div>
+<div class="section" id="successful-case">
+<span id="id17"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li>Return string of wallet address begins from <code class="docutils literal notranslate"><span class="pre">hx</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="error-cases">
+<span id="id18"></span><h4>Error cases<a class="headerlink" href="#error-cases" title="제목 주소">¶</a></h4>
+<p>It will raise following exception.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">AddressIsWrong</span></code> : Address is wrong.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="icx_JSON_2_RPC.html" class="btn btn-neutral float-right" title="JSON RPC API v2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Appendix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, ICON Foundation.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

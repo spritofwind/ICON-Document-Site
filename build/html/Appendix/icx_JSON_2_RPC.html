@@ -1,0 +1,892 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>JSON RPC API v2 &mdash; ICON Documentation 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="색인"
+              href="../genindex.html"/>
+        <link rel="search" title="검색" href="../search.html"/>
+    <link rel="top" title="ICON Documentation 0.0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Appendix" href="index.html"/>
+        <link rel="next" title="Glossary" href="../Glossary.html"/>
+        <link rel="prev" title="Python SDK" href="icon_sdk_for_python.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ICON Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ICONnode/index.html">ICON node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HowtouseICONnetwork/index.html">How to use ICON network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AccountManagement/index.html">Account Mangement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TheICONnetwork/index.html">The ICON network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ContractandTransactions/index.html">Contract and Transactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ/index.html">FAQ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Appendix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="icon_sdk_for_python.html">Python SDK</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">JSON RPC API v2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#endpoint">Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#icx-sendtransaction">icx_sendTransaction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#icx-gettransactionresult">icx_getTransactionResult</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#icx-getbalance">icx_getBalance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#icx-getblockbyheight">icx_getBlockByHeight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#icx-getblockbyhash">icx_getBlockByHash</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#icx-getlastblock">icx_getLastBlock</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ICON Documentation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Appendix</a> &raquo;</li>
+        
+      <li>JSON RPC API v2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Appendix/icx_JSON_2_RPC.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="json-rpc-api-v2">
+<span id="json-rpc-api-v2"></span><h1>JSON RPC API v2<a class="headerlink" href="#json-rpc-api-v2" title="제목 주소">¶</a></h1>
+<div class="section" id="endpoint">
+<span id="endpoint"></span><h2>Endpoint<a class="headerlink" href="#endpoint" title="제목 주소">¶</a></h2>
+<ul class="simple">
+<li>Mainnet: https://wallet.icon.foundation/api/v2</li>
+<li>Testnet: https://testwallet.icon.foundation/api/v2</li>
+</ul>
+</div>
+<div class="section" id="icx-sendtransaction">
+<span id="icx-sendtransaction"></span><h2>icx_sendTransaction<a class="headerlink" href="#icx-sendtransaction" title="제목 주소">¶</a></h2>
+<p>Transfer ICX value from one wallet to another with the fee.</p>
+<div class="section" id="request">
+<span id="request"></span><h3>Request<a class="headerlink" href="#request" title="제목 주소">¶</a></h3>
+<div class="section" id="json-rpc-data">
+<span id="json-rpc-data"></span><h4>JSON RPC data<a class="headerlink" href="#json-rpc-data" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">jsonrpc</span></code>: Fixed as &quot;2.0&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">method</span></code>: &quot;icx_sendTransaction&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: An identifier established by the Client that MUST contain a String, Number, or NULL value if included. If it is not included it is assumed to be a notification. The value SHOULD normally not be Null and Numbers SHOULD NOT contain fractional parts.</li>
+</ul>
+</div>
+<div class="section" id="params">
+<span id="params"></span><h4>Params<a class="headerlink" href="#params" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">from</span></code><ul>
+<li>Wallet address of the sender</li>
+<li>Type: String</li>
+<li>Format: ‘hx’ +  40 digit hex string</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">to</span></code><ul>
+<li>Wallet address of the recipient</li>
+<li>Type: String</li>
+<li>Format: ‘hx’ +  40 digit hex string</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">value</span></code><ul>
+<li>The transfer amount(ICX)</li>
+<li>Type: String</li>
+<li>Format: <code class="docutils literal notranslate"><span class="pre">0x</span></code> + Hex string</li>
+<li>Unit: 1/10<sup>18</sup> icx<ul>
+<li>To transfer 1.0 icx, the value must be the hex value of 1.0 X 10<sup>18</sup>.</li>
+<li>Ex) 1 icx = 10<sup>18</sup> loop = &quot;0xDE0B6B3A7640000&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">fee</span></code><ul>
+<li>The fee for the transaction</li>
+<li>Type: String</li>
+<li>Format: 0x’ + Hex string string</li>
+<li>Unit: 1/10<sup>18</sup> icx</li>
+<li>Currently, it’s 0.01 icx (Jan 25, 2018)<ul>
+<li>Ex) 0.01icx = 10<sup>16</sup> = &quot;0x2386f26fc10000&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">timestamp</span></code><ul>
+<li>UNIX epoch time (Begin from 1970.1.1 00:00:00)</li>
+<li>Type: string</li>
+<li>Unit: microseconds</li>
+<li>Meaning: creation time of this transaction to avoid ‘replay attack’.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">nonce</span></code> (optional)<ul>
+<li>Type: string</li>
+<li>Integer value increased by request to avoid ‘replay attack’</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">tx_hash</span></code><ul>
+<li>See ‘Additional information.’</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">signature</span></code><ul>
+<li>See ‘Additional information.’</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="additional-information">
+<span id="additional-information"></span><h4>Additional information<a class="headerlink" href="#additional-information" title="제목 주소">¶</a></h4>
+<div class="section" id="generate-tx-hash">
+<span id="generate-tx-hash"></span><h5>Generate tx_hash<a class="headerlink" href="#generate-tx-hash" title="제목 주소">¶</a></h5>
+<p><code class="docutils literal notranslate"><span class="pre">tx_hash</span></code> has bundled the parameters of the transaction. Pseudo code to generate <code class="docutils literal notranslate"><span class="pre">tx_hash</span></code> is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>def create_dictionary_with_key( from, to, value, fee):
+    temp_dict = dict()
+    temp_dict[&quot;from&quot;] = from
+    temp_dict[“to”] = to
+    temp_dict[“value”] = value
+    temp_dict[“time”] = get_UNIX_time_in_string()
+    temp_dict[“nonce”] = get_nonce_value()
+    return temp_dict
+
+
+def get_dump_string(key_sorted_data):
+    str_tmp = “icx_sendTransaction”
+    for key, value in key_sorted_data.item():
+           str_tmp += “.”
+           str_tmp += str(key)
+           str_tmp += “.”
+           str_tmp += str(value)
+
+    return str_tmp
+
+
+tx_tmp = create_dictionary_with_key(from, to, value, fee)
+key_sorted_data = get_dictionary_with_sorted_by_key_in_unicode(tx_tmp)
+dumped_string = get_dump_string(key_sorted_data)
+tx_hash = hashlib.sha3_256(dumped_string.encode()).hexdigest()
+</pre></div>
+</div>
+</div>
+<div class="section" id="generate-signature">
+<span id="generate-signature"></span><h5>Generate signature<a class="headerlink" href="#generate-signature" title="제목 주소">¶</a></h5>
+<p>The <code class="docutils literal notranslate"><span class="pre">signature</span></code> is electronic signature data derived from the wallet’s private key of the sender. Pseudo code to generate the signature is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">signature</span> <span class="o">=</span> <span class="n">SECP256k1</span><span class="o">.</span><span class="n">ecdsa_sign_recoverable</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">tx_hash</span><span class="p">),</span>
+                                                   <span class="n">raw</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                                   <span class="n">digest</span><span class="o">=</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha3_256</span><span class="p">)</span>
+<span class="n">serialized_sig</span> <span class="o">=</span> <span class="n">SECP256k1</span><span class="o">.</span><span class="n">ecdsa_recoverable_serialize</span><span class="p">(</span><span class="n">signature</span><span class="p">)</span>
+<span class="n">sig_message</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">serialized_sig</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">serialized_sig</span><span class="p">[</span><span class="mi">1</span><span class="p">]])])</span>
+<span class="n">signature</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">sig_message</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="example-of-request">
+<span id="example-of-request"></span><h4>Example of request<a class="headerlink" href="#example-of-request" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;icx_sendTransaction&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;hxbe258ceb872e08851f1f59694dac2558708ece11&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;hxb0776ee37f5b45bfaea8cff1d8232fbb6122ec32&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;0xde0b6b3a7640000&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;fee&quot;</span><span class="p">:</span> <span class="s2">&quot;0x2386f26fc10000&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;1516942975500598&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;8367273&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;tx_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;4bf74e6aeeb43bde5dc8d5b62537a33ac8eb7605ebbdb51b015c1881b45b3aed&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;signature&quot;</span><span class="p">:</span> <span class="s2">&quot;VAia7YZ2Ji6igKWzjR2YsGa2m53nKPrfK7uXYW78QLE+ATehAVZPC40szvAiA6NEU5gCYB4c4qaQzqDh2ugcHgA=&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="response">
+<span id="response"></span><h3>Response<a class="headerlink" href="#response" title="제목 주소">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">response_code</span></code>: JSON RPC error code.</li>
+<li><code class="docutils literal notranslate"><span class="pre">tx_hash</span></code>: Hash data of the result. Use icx_getTransactionResult to get the result.</li>
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: It MUST be the same as the value of the id member in the Request Object.<ul>
+<li>If there was an error in detecting the id in the Request object (e.g. Parse error/Invalid Request), it MUST be Null.</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="successful-case">
+<span id="successful-case"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;tx_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;4bf74e6aeeb43bde5dc8d5b62537a33ac8eb7605ebbdb51b015c1881b45b3aed&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="unsuccessful-case">
+<span id="unsuccessful-case"></span><h4>Unsuccessful case<a class="headerlink" href="#unsuccessful-case" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;create tx message&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">-11</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="icx-gettransactionresult">
+<span id="icx-gettransactionresult"></span><h2>icx_getTransactionResult<a class="headerlink" href="#icx-gettransactionresult" title="제목 주소">¶</a></h2>
+<p>Request the result of previous transaction.</p>
+<div class="section" id="request">
+<span id="id1"></span><h3>Request<a class="headerlink" href="#request" title="제목 주소">¶</a></h3>
+<div class="section" id="json-rpc-data">
+<span id="id2"></span><h4>JSON RPC data<a class="headerlink" href="#json-rpc-data" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">jsonrpc</span></code>: Fixed as &quot;2.0&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">method</span></code>: &quot;icx_getTransactionResult&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: An identifier established by the Client that MUST contain a String, Number, or NULL value if included. If it is not included it is assumed to be a notification. The value SHOULD normally not be Null and Numbers SHOULD NOT contain fractional parts.</li>
+</ul>
+</div>
+<div class="section" id="params">
+<span id="id3"></span><h4>Params<a class="headerlink" href="#params" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">tx_hash</span></code>: Hash string from the result of icx_sendTransaction</li>
+</ul>
+<div class="section" id="example-of-request">
+<span id="id4"></span><h5>Example of request<a class="headerlink" href="#example-of-request" title="제목 주소">¶</a></h5>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;jsonrpc&quot;</span> <span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;icx_getTransactionResult&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;tx_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;e670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="response">
+<span id="id5"></span><h3>Response<a class="headerlink" href="#response" title="제목 주소">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: It MUST be the same as the value of the id member in the Request Object.<ul>
+<li>If there was an error in detecting the id in the Request object (e.g. Parse error/Invalid Request), it MUST be Null.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">response_code</span></code>: JSON RPC error code.</li>
+<li><code class="docutils literal notranslate"><span class="pre">response</span></code>: Code or message. See the following explanation for code.<ul>
+<li>SUCCESS = 0</li>
+<li>EXCEPTION = 90</li>
+<li>NOT_INVOKED = 2  # means pending</li>
+<li>NOT_EXIST = 3  # possibly means failure</li>
+<li>SCORE_CONTAINER_EXCEPTION = 9100</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="successful-case">
+<span id="id6"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="unsuccessful-case">
+<span id="id7"></span><h4>Unsuccessful case<a class="headerlink" href="#unsuccessful-case" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">-6</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid transaction hash.&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="icx-getbalance">
+<span id="icx-getbalance"></span><h2>icx_getBalance<a class="headerlink" href="#icx-getbalance" title="제목 주소">¶</a></h2>
+<p>Get the balance of the wallet address.</p>
+<div class="section" id="request">
+<span id="id8"></span><h3>Request<a class="headerlink" href="#request" title="제목 주소">¶</a></h3>
+<div class="section" id="json-rpc-data">
+<span id="id9"></span><h4>JSON RPC data<a class="headerlink" href="#json-rpc-data" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">jsonrpc</span></code>: Fixed as &quot;2.0&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">method</span></code>:  &quot;icx_getBalance&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: An identifier established by the Client that MUST contain a String, Number, or NULL value if included. If it is not included it is assumed to be a notification. The value SHOULD normally not be Null and Numbers SHOULD NOT contain fractional parts.</li>
+</ul>
+</div>
+<div class="section" id="params">
+<span id="id10"></span><h4>Params<a class="headerlink" href="#params" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">address</span></code>: Address of wallet.</li>
+</ul>
+</div>
+<div class="section" id="example-of-request">
+<span id="id11"></span><h4>Example of request<a class="headerlink" href="#example-of-request" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;jsonrpc&quot;</span> <span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;icx_getBalance&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;hxaa688d74eb5f98b577883ca203535d2aa4f0838c&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="response">
+<span id="id12"></span><h3>Response<a class="headerlink" href="#response" title="제목 주소">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: It MUST be the same as the value of the id member in the Request Object.<ul>
+<li>If there was an error in detecting the id in the Request object (e.g. Parse error/Invalid Request), it MUST be Null.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">response_code</span></code>: JSON RPC error code.</li>
+<li><code class="docutils literal notranslate"><span class="pre">response</span></code>: code or message. See the following explanation for code.<ul>
+<li>SUCCESS = 0</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="successful-case">
+<span id="id13"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;response&quot;</span><span class="p">:</span> <span class="s2">&quot;0x0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1234</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="unsuccessful-case">
+<span id="id14"></span><h4>Unsuccessful case<a class="headerlink" href="#unsuccessful-case" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="mi">-32602</span><span class="p">,</span>
+        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Invalid params&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="icx-getblockbyheight">
+<span id="icx-getblockbyheight"></span><h2>icx_getBlockByHeight<a class="headerlink" href="#icx-getblockbyheight" title="제목 주소">¶</a></h2>
+<p>Get block information and transactions by block height</p>
+<div class="section" id="request">
+<span id="id15"></span><h3>Request<a class="headerlink" href="#request" title="제목 주소">¶</a></h3>
+<div class="section" id="json-rpc-data">
+<span id="id16"></span><h4>JSON RPC data<a class="headerlink" href="#json-rpc-data" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">jsonrpc</span></code>: Fixed as &quot;2.0&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">method</span></code>:  &quot;icx_getBlockByHeight&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: An identifier established by the Client that MUST contain a String, Number, or NULL value if included. If it is not included it is assumed to be a notification. The value SHOULD normally not be Null and Numbers SHOULD NOT contain fractional parts.</li>
+</ul>
+</div>
+<div class="section" id="params">
+<span id="id17"></span><h4>Params<a class="headerlink" href="#params" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>: Block height</li>
+</ul>
+</div>
+<div class="section" id="example-of-request">
+<span id="id18"></span><h4>Example of request<a class="headerlink" href="#example-of-request" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;jsonrpc&quot;</span> <span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;icx_getBlockByHeight&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="s2">&quot;1234&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="response">
+<span id="id19"></span><h3>Response<a class="headerlink" href="#response" title="제목 주소">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: It MUST be the same as the value of the id member in the Request Object.<ul>
+<li>If there was an error in detecting the id in the Request object (e.g. Parse error/Invalid Request), it MUST be Null.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">response_code</span></code>: JSON RPC error code.</li>
+<li><code class="docutils literal notranslate"><span class="pre">block</span></code>: Block information<ul>
+<li><code class="docutils literal notranslate"><span class="pre">version</span></code> : Version of block structure</li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>: Height of current block</li>
+<li><code class="docutils literal notranslate"><span class="pre">prev_block_hash</span></code>: Block hash of previous block</li>
+<li><code class="docutils literal notranslate"><span class="pre">merkle_tree_root_hash</span></code>:Merkle tree root hash of transactions in this block.</li>
+<li><code class="docutils literal notranslate"><span class="pre">time_stamp</span></code> : UNIX epoch time (Begin from 1970.1.1 00:00:00)<ul>
+<li>Unit: microseconds</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">block_hash</span></code>: Hash of block</li>
+<li><code class="docutils literal notranslate"><span class="pre">peer_id</span></code>: Id of node</li>
+<li><code class="docutils literal notranslate"><span class="pre">signature</span></code>: See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">confirmed_transaction_list</span></code>: List of transactions in this block.<ul>
+<li><code class="docutils literal notranslate"><span class="pre">from</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">to</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">value</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">nonce</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">tx_hash</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">signature</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">method</span></code>: Fixed as &quot;icx_sendTransaction&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="successful-case">
+<span id="id20"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+  <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;block&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1a&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;prev_block_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;48757af881f76c858890fb41934bee228ad50a71707154a482826c39b8560d4b&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;merkle_tree_root_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;fabc1884932cf52f657475b6d62adcbce5661754ff1a9d50f13f0c49c7d48c0c&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span> <span class="mi">1516498781094429</span><span class="p">,</span>
+      <span class="nt">&quot;block_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;1fcf7c34dc875681761bdaa5d75d770e78e8166b5c4f06c226c53300cbe85f57&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;peer_id&quot;</span><span class="p">:</span> <span class="s2">&quot;e07212ee-fe4b-11e7-8c7b-acbc32865d5f&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;signature&quot;</span><span class="p">:</span> <span class="s2">&quot;MEQCICT8mTIL6pRwMWsJjSBHcl4QYiSgG8+0H3U32+05mO9HAiBOhIfBdHNm71WpAZYwJWwQbPVVXFJ8clXGKT3ScDWcvw==&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;confirmed_transaction_list&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;hx63fac3fc777ad647d2c3a72cf0fc42d420a2ba81&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;hx5f8bfd603f1712ccd335d7648fbc989f63251354&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;0xde0b6b3a7640000&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;fee&quot;</span><span class="p">:</span> <span class="s2">&quot;0x2386f26fc10000&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;0x3&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;tx_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;fabc1884932cf52f657475b6d62adcbce5661754ff1a9d50f13f0c49c7d48c0c&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;signature&quot;</span><span class="p">:</span> <span class="s2">&quot;cpSevyvPKC4OpAyywnoNyf0gamHylHOeuSPnLjkyILl1n9Xo4ygezzxda8LpcQ6K1rmo4JU+mXdh+Beh+/mhBgA=&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;icx_sendTransaction&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tip-to-get-the-total-block-height-of-current-block-loopchain">
+<span id="tip-to-get-the-total-block-height-of-current-block-loopchain"></span><h4>TIP : To get the total block height of current block loopchain<a class="headerlink" href="#tip-to-get-the-total-block-height-of-current-block-loopchain" title="제목 주소">¶</a></h4>
+<p>Request <code class="docutils literal notranslate"><span class="pre">height</span></code> as <code class="docutils literal notranslate"><span class="pre">-1</span></code>. Then it returns the top block in blockchain. You can get the total block height by using <code class="docutils literal notranslate"><span class="pre">result.height.height</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="icx-getblockbyhash">
+<span id="icx-getblockbyhash"></span><h2>icx_getBlockByHash<a class="headerlink" href="#icx-getblockbyhash" title="제목 주소">¶</a></h2>
+<p>Get block information and transactions by block hash.</p>
+<div class="section" id="request">
+<span id="id21"></span><h3>Request<a class="headerlink" href="#request" title="제목 주소">¶</a></h3>
+<div class="section" id="json-rpc-data">
+<span id="id22"></span><h4>JSON RPC data<a class="headerlink" href="#json-rpc-data" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">jsonrpc</span></code>: Fixed as &quot;2.0&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">method</span></code>:  &quot;icx_getBlockByHash&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: An identifier established by the Client that MUST contain a String, Number, or NULL value if included. If it is not included it is assumed to be a notification. The value SHOULD normally not be Null and Numbers SHOULD NOT contain fractional parts.</li>
+</ul>
+</div>
+<div class="section" id="params">
+<span id="id23"></span><h4>Params<a class="headerlink" href="#params" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">hash</span></code>: Hash of block</li>
+</ul>
+</div>
+<div class="section" id="example-of-request">
+<span id="id24"></span><h4>Example of request<a class="headerlink" href="#example-of-request" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;jsonrpc&quot;</span> <span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;icx_getBlockByHash&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+   <span class="nt">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="response">
+<span id="id25"></span><h3>Response<a class="headerlink" href="#response" title="제목 주소">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: It MUST be the same as the value of the id member in the Request Object.<ul>
+<li>If there was an error in detecting the id in the Request object (e.g. Parse error/Invalid Request), it MUST be Null.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">response_code</span></code>: JSON RPC error code.</li>
+<li><code class="docutils literal notranslate"><span class="pre">block</span></code>: Block information</li>
+</ul>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">version</span></code> : Version of block structure</li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>: Height of current block</li>
+<li><code class="docutils literal notranslate"><span class="pre">prev_block_hash</span></code>: Block hash of previous block</li>
+<li><code class="docutils literal notranslate"><span class="pre">merkle_tree_root_hash</span></code>:Merkle tree root hash of transactions in this block.</li>
+<li><code class="docutils literal notranslate"><span class="pre">time_stamp</span></code> : UNIX epoch time (Begin from 1970.1.1 00:00:00)<ul>
+<li>Unit: microseconds</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">block_hash</span></code>: Hash of block</li>
+<li><code class="docutils literal notranslate"><span class="pre">peer_id</span></code>: Id of node</li>
+<li><code class="docutils literal notranslate"><span class="pre">signature</span></code>: See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">confirmed_transaction_list</span></code>: List of transactions in this block.<ul>
+<li><code class="docutils literal notranslate"><span class="pre">from</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">to</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">value</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">nonce</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">tx_hash</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">signature</span></code> : See <a class="reference external" href="#request">this</a> section</li>
+<li><code class="docutils literal notranslate"><span class="pre">method</span></code>: Fixed as &quot;icx_sendTransaction&quot;</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="successful-case">
+<span id="id26"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+  <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;block&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1a&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;prev_block_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;48757af881f76c858890fb41934bee228ad50a71707154a482826c39b8560d4b&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;merkle_tree_root_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;fabc1884932cf52f657475b6d62adcbce5661754ff1a9d50f13f0c49c7d48c0c&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;time_stamp&quot;</span><span class="p">:</span> <span class="mi">1516498781094429</span><span class="p">,</span>
+      <span class="nt">&quot;block_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;1fcf7c34dc875681761bdaa5d75d770e78e8166b5c4f06c226c53300cbe85f57&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;peer_id&quot;</span><span class="p">:</span> <span class="s2">&quot;e07212ee-fe4b-11e7-8c7b-acbc32865d5f&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;signature&quot;</span><span class="p">:</span> <span class="s2">&quot;MEQCICT8mTIL6pRwMWsJjSBHcl4QYiSgG8+0H3U32+05mO9HAiBOhIfBdHNm71WpAZYwJWwQbPVVXFJ8clXGKT3ScDWcvw==&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;confirmed_transaction_list&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;hx63fac3fc777ad647d2c3a72cf0fc42d420a2ba81&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;hx5f8bfd603f1712ccd335d7648fbc989f63251354&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;0xde0b6b3a7640000&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;fee&quot;</span><span class="p">:</span> <span class="s2">&quot;0x2386f26fc10000&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;0x3&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;tx_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;fabc1884932cf52f657475b6d62adcbce5661754ff1a9d50f13f0c49c7d48c0c&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;signature&quot;</span><span class="p">:</span> <span class="s2">&quot;cpSevyvPKC4OpAyywnoNyf0gamHylHOeuSPnLjkyILl1n9Xo4ygezzxda8LpcQ6K1rmo4JU+mXdh+Beh+/mhBgA=&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;icx_sendTransaction&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="icx-getlastblock">
+<span id="icx-getlastblock"></span><h2>icx_getLastBlock<a class="headerlink" href="#icx-getlastblock" title="제목 주소">¶</a></h2>
+<p>Get last block information and transactions.</p>
+<div class="section" id="request">
+<span id="id27"></span><h3>Request<a class="headerlink" href="#request" title="제목 주소">¶</a></h3>
+<div class="section" id="json-rpc-data">
+<span id="id28"></span><h4>JSON RPC data<a class="headerlink" href="#json-rpc-data" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">jsonrpc</span></code>: Fixed as &quot;2.0&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">method</span></code>:  &quot;icx_getLastBlock&quot;</li>
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: An identifier established by the Client that MUST contain a String, Number, or NULL value if included. If it is not included it is assumed to be a notification. The value SHOULD normally not be Null and Numbers SHOULD NOT contain fractional parts.</li>
+</ul>
+</div>
+<div class="section" id="params">
+<span id="id29"></span><h4>Params<a class="headerlink" href="#params" title="제목 주소">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">hash</span></code>: Hash of block</li>
+</ul>
+</div>
+<div class="section" id="example-of-request">
+<span id="id30"></span><h4>Example of request<a class="headerlink" href="#example-of-request" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;jsonrpc&quot;</span> <span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+  <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;icx_getLastBlock&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="response">
+<span id="id31"></span><h3>Response<a class="headerlink" href="#response" title="제목 주소">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">id</span></code>: It MUST be the same as the value of the id member in the Request Object.<ul>
+<li>If there was an error in detecting the id in the Request object (e.g. Parse error/Invalid Request), it MUST be Null.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">result</span></code>: Block information<ul>
+<li><code class="docutils literal notranslate"><span class="pre">response_code</span></code>:JSON RPC error code.</li>
+<li><code class="docutils literal notranslate"><span class="pre">block_data_json</span></code> : Block data<ul>
+<li><code class="docutils literal notranslate"><span class="pre">prev_block_hash</span></code>: The hash of previous block hash</li>
+<li><code class="docutils literal notranslate"><span class="pre">height</span></code>: The height of this block</li>
+<li><code class="docutils literal notranslate"><span class="pre">block_hash</span></code>: The hash of last block.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="successful-case">
+<span id="id32"></span><h4>Successful case<a class="headerlink" href="#successful-case" title="제목 주소">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+      <span class="nt">&quot;jsonrpc&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+  <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;response_code&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;block_data_json&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;prev_block_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;block_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc&quot;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="icon_sdk_for_python.html" class="btn btn-neutral" title="Python SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, ICON Foundation.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
